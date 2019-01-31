@@ -44,7 +44,9 @@ namespace DirectX
 
         virtual ~GamePad();
 
-    #if (_WIN32_WINNT >= 0x0A00 /*_WIN32_WINNT_WIN10*/ ) || defined(_XBOX_ONE)
+    #if (_WIN32_WINNT >= 0x0A00 /*_WIN32_WINNT_WIN10*/ )
+        static const int MAX_PLAYER_COUNT = 8; // There is no hard limit but we chose to set it to 8 for Windows 10
+    #elif defined(_XBOX_ONE)
         static const int MAX_PLAYER_COUNT = 8;
     #else
         static const int MAX_PLAYER_COUNT = 4;
